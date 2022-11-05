@@ -24,10 +24,10 @@
         <Label Grid.Column="1" TextBlock.FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Rent truck" Foreground="White" FontSize="20"></Label>
         <StackPanel  Grid.Row="1" Grid.Column="1"  Grid.RowSpan="4" Orientation="Vertical">
             <TextBox Name="CustomerNameTextBox" FontSize="20" Margin="1,10,1,10" TextChanged="CustomerNameTextBox_TextChanged"></TextBox>
-            <ComboBox Name="CustomerLiscenseComboBox" FontSize="20" Margin="1,10,1,10"></ComboBox>
-            <ComboBox Name="TruckRegoComboBox" FontSize="20" Margin="1,10,1,10" DropDownClosed="TruckRegoComboBox_DropDownClosed"></ComboBox>
+            <ComboBox Name="CustomerLiscenseComboBox" FontSize="20" Margin="1,10,1,10"  IsEditable="True" IsReadOnly="True"></ComboBox>
+            <ComboBox Name="TruckRegoComboBox" FontSize="20" Margin="1,10,1,10" DropDownClosed="TruckRegoComboBox_DropDownClosed"  IsEditable="True" IsReadOnly="True"></ComboBox>
             <DatePicker Name="DateRentedPicker" FontSize="20" Margin="1,10,1,10" />
-            <DatePicker Name="DateDuePicker" FontSize="20" Margin="1,10,1,10" />
+            <DatePicker Name="DateDuePicker" FontSize="20" Margin="1,10,1,10" SelectedDateChanged="DateDuePicker_SelectedDateChanged" />
             <TextBox Name="DepositTextBox" FontSize="20" Margin="1,10,1,10"/>
             <TextBox Name="priceTextBox" FontSize="20" Margin="1,10,1,10"/>
           

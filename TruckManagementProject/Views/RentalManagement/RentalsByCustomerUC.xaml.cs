@@ -24,5 +24,10 @@ namespace TruckManagementProject.Views.RentalManagement
         {
             InitializeComponent();
         }
+
+        private void ReturnTruckButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

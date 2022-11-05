@@ -39,8 +39,8 @@ namespace TruckManagementProject.Views.RentalManagement
             //DAO.getCustomerName(customerName);
             //string customerLicense = CustomerLiscenseComboBox.Text;
             CustomerLiscenseComboBox.ItemsSource = DAO.getCustomerNameLicense(customerName);
-            CustomerLiscenseComboBox.DisplayMemberPath = "LicenseNumber" + DAO.getCustomerName(customerName);
-            CustomerLiscenseComboBox.SelectedValuePath = "LicenseNumber" + DAO.getCustomerName(customerName);
+            CustomerLiscenseComboBox.DisplayMemberPath = "LicenseNumber";
+            CustomerLiscenseComboBox.SelectedValuePath = "LicenseNumber";
         }
 
         // creates an Object of truck rental and adds any inputed values to the Object
@@ -52,8 +52,8 @@ namespace TruckManagementProject.Views.RentalManagement
                 string customerLicense = CustomerLiscenseComboBox.Text;
                 int TruckId = DAO.getTruckRego(registraion).TruckId;
                 int customerId = DAO.getCustomerLicense(customerLicense).CustomerId;
-                DateTime rentDate = DateTime.Parse(DateRentedPicker.Text);
-                DateTime dueDate = DateTime.Parse(DateDuePicker.Text);
+                DateTime rentDate = DateTime.Parse(DateRentedPicker.SelectedDate.ToString());
+                DateTime dueDate = DateTime.Parse(DateDuePicker.SelectedDate.ToString());
                 decimal totalPrice = decimal.Parse(priceTextBox.Text);
 
                 TruckRental tr = new TruckRental();
@@ -79,15 +79,44 @@ namespace TruckManagementProject.Views.RentalManagement
             try
             {
                 string registration = TruckRegoComboBox.Text;
-                if (registration != null)
+                if (registration != null )
                 {
                     string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);
                     DepositTextBox.Text = deposit;
+                }else if(DepositTextBox != null) 
+                {
+                    MessageBox.Show("please select a truck registration");
+                
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void DateDuePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(DateDuePicker.SelectedDate< DateTime.Today && DateDuePicker.SelectedDate < DateRentedPicker.SelectedDate) 
+            {
+                MessageBox.Show("Please select correct day");
+                return;
+            }
+            else 
+            {
+                string rego = TruckRegoComboBox.Text;
+                double price = (double)DAO.getTruckRego(rego).TruckId;
+                DateTime rentDate = DateTime.Parse(DateRentedPicker.SelectedDate.ToString());
+                DateTime dueDate = DateTime.Parse(DateDuePicker.SelectedDate.ToString());
+                int days = (int)(dueDate - rentDate).TotalDays;
+                if (dueDate == rentDate)
+                {
+                    days = 1;
+                }
+                double totalPrice = days * price;
+
+                priceTextBox.Text = totalPrice.ToString();
+
             }
         }
     }

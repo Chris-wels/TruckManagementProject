@@ -25,13 +25,25 @@ namespace TruckManagementProject.Views.RentalManagement
         public ReturnTruckUC()
         {
             InitializeComponent();
+            TruckRegostrationComboBox.ItemsSource = DAO.getTruckRentals();
+            TruckRegostrationComboBox.DisplayMemberPath = "RegistrationNumber";
+            TruckRegostrationComboBox.SelectedValuePath = "RegistrationNumber";
         }
 
         private void ReturnTruckButton_Click(object sender, RoutedEventArgs e)
         {
-            string registration = TruckRegostrationTextBox.Text;
-            TruckRental rental = DAO.getRentalRecordByRego(registration);
-            rental.ReturnDate = dateReturnedPicker.SelectedDate.Value;
-        }
+            try
+            {
+                string registration = TruckRegostrationComboBox.Text;
+                TruckRental rental = DAO.getRentalRecordByRego(registration);
+                rental.ReturnDate = dateReturnedPicker.SelectedDate.Value;
+                DAO.ReturnTruck(rental);
+                MessageBox.Show("Truck Returned Successfully");
+            }
+            catch (Exception ex)
+            { 
+            MessageBox.Show(ex.Message);
+            } 
+          }
     }
 }

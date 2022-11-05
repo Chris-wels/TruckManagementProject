@@ -24,8 +24,8 @@
         <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" FontSize="25" Foreground="White" FontWeight="Bold" Content="Show Rented Trucks by Date"></Label>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="5" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="1,1,20,1">
             <Label  Foreground="White" Content="Customer ID:" FontSize="20" Margin="1,1,20,1"/>
-            <TextBox Name="customerIdTextBox" FontSize="20" Width="200" Margin="1,1,40,1"/>
-            <Button TextBlock.FontWeight="Bold" Name="ReturnTruckButton" Background="#f2d317" Width="150" FontSize="15"  Content="Show Rentals"/>
+            <ComboBox  Text="--Select a Customer Id--" Name="customerIdComboBox" FontSize="20" Width="200" Margin="1,1,40,1"/>
+            <Button TextBlock.FontWeight="Bold" Name="ReturnTruckButton" Background="#f2d317" Width="150" FontSize="15"  Content="Show Rentals" Click="ReturnTruckButton_Click"/>
         </StackPanel>
         <DataGrid Name="rentalCustomerTruckDataGrid" Grid.Column="1" Grid.Row="2" Margin="10,40,10,10" Grid.RowSpan="2" Grid.ColumnSpan="2"></DataGrid>
 

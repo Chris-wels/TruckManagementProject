@@ -80,6 +80,15 @@ namespace TruckManagementProject.Controller
         }
 
         /*------Rental Management-------------------------------------------------------------------------------*/
+
+        public static List<TruckRental> getTruckRentals() 
+        {
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
+            {
+               return ctx.TruckRentals.Include(tm => tm.Truck).Where(tr => tr.Truck.Status == "Rented").ToList();
+            }
+        }
+
         public static TruckCustomer getCustomerName(string customerName)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -131,7 +140,7 @@ namespace TruckManagementProject.Controller
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-                IndividualTruck id = ctx.IndividualTrucks.Where(it => it.TruckId == truckId).FirstOrDefault();
+                IndividualTruck id = ctx.IndividualTrucks.Include(t => t.TruckModel).Where(it => it.TruckId == truckId).FirstOrDefault();
                 if (id != null)
                 {
                     if (id.Status == "Available for rent")
@@ -153,7 +162,7 @@ namespace TruckManagementProject.Controller
             id = rental.TruckId;
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-                ctx.Add(rental);
+                ctx.TruckRentals.Add(rental);
                 changeAvailabilityStatus(id);
                 ctx.SaveChanges();
             }

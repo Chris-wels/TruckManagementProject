@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="1" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" FontSize="20" Foreground="White" FontWeight="Bold" Content="Return Rented Trucks"/>
         <StackPanel Grid.Row="2" Grid.Column="1">
-            <TextBox Name="TruckRegostrationTextBox" FontSize="20" Margin="10"/>
+            <ComboBox Text="--Select a truck to return--" Name="TruckRegostrationComboBox" FontSize="20" Margin="10"/>
             <DatePicker Name="dateReturnedPicker"/>
 
             <Button  TextBlock.FontWeight="Bold" Name="ReturnTruckButton" Background="#f2d317" FontSize="15" Width="120" Margin="20,15" Padding="10" Grid.Column="1" Content="Return Truck" Click="ReturnTruckButton_Click"/>
