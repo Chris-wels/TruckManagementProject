@@ -97,7 +97,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 MessageBox.Show(ex.Message);
             }
         }
-
+        //Calculates Date Rented and Date Due Total price amount
         private void DateDuePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if(DateDuePicker.SelectedDate< DateTime.Today && DateDuePicker.SelectedDate < DateRentedPicker.SelectedDate) 
