@@ -41,6 +41,9 @@ namespace TruckManagementProject.Views.RentalManagement
             CustomerLiscenseComboBox.ItemsSource = DAO.getCustomerNameLicense(customerName);
             CustomerLiscenseComboBox.DisplayMemberPath = "LicenseNumber";
             CustomerLiscenseComboBox.SelectedValuePath = "LicenseNumber";
+            
+
+            
         }
 
         // creates an Object of truck rental and adds any inputed values to the Object
@@ -83,7 +86,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 {
                     string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);        
                     DepositTextBox.Text = deposit;
-                }else if(DepositTextBox != null) 
+                }else 
                 {
                     MessageBox.Show("please select a truck registration");
                 
@@ -116,7 +119,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 }
                 double totalPrice = days * price;
 
-                priceTextBox.Text = totalPrice.ToString();
+                priceTextBox.Text = String.Format("{0:f2}",totalPrice);
 
             }
         }
