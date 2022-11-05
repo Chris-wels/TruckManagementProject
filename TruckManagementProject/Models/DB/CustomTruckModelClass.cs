@@ -33,10 +33,10 @@ namespace TruckManagementProject.Models.DB
         public string Manufacturer { get; set; }
         public string Size { get; set; }
 
-        public List<string> Features = new List<string>();
-        public string AllFeatures
+        public List<string> features = new List<string>();
+        public string Features
         {
-            get { return string.Join(", ", Features); }
+            get { return string.Join(", ", features); }
         }
     }
 }

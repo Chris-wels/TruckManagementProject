@@ -223,7 +223,7 @@ namespace TruckManagementProject.Controller
                         DailyRentalPrice = tbm.DailyRentalPrice,
                         Size = tbm.TruckModel.Size,
                         Status = tbm.Status,
-                        Features = tbm.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
+                        features = tbm.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
                     }).ToList();
             }
         }
@@ -241,7 +241,7 @@ namespace TruckManagementProject.Controller
                         DailyRentalPrice = tbm.DailyRentalPrice,
                         Size = tbm.TruckModel.Size,
                         Status = tbm.Status,
-                        Features = tbm.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
+                        features = tbm.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
                     }).ToList();
             }
         }
@@ -280,7 +280,7 @@ namespace TruckManagementProject.Controller
                         Advance_Deposit = im.AdvanceDepositRequired.ToString(),
                         Manufacturer = im.TruckModel.Manufacturer,
                         Size = im.TruckModel.Size,
-                        Features = im.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
+                        features = im.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
                     }).ToList();
             }
         }
@@ -312,7 +312,7 @@ namespace TruckManagementProject.Controller
                         Advance_Deposit = im.AdvanceDepositRequired.ToString(),
                         Manufacturer = im.TruckModel.Manufacturer,
                         Size = im.TruckModel.Size,
-                        Features = im.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
+                        features = im.TruckFeatureAssociations.Select(f => f.Feature.Description).ToList()
                     }).ToList();
             }
         }

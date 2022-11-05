@@ -164,7 +164,6 @@ namespace TruckManagementProject.Views.TruckManagement
                     rentalPriceTextbox.Text = indiTruck.DailyRentalPrice.ToString();
                     advanceDepositTextbox.Text = indiTruck.AdvanceDepositRequired.ToString();
                     listbox1.ItemsSource = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
-
                 }
             }
         }
@@ -222,6 +221,7 @@ namespace TruckManagementProject.Views.TruckManagement
 
                 MessageBox.Show("Feature added successfully!");
                 DAO.addTruckFeatures(tfa);
+                //refreshes listbox to update features of the truck 
                 listbox1.ItemsSource = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
             }
             else
