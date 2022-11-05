@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="TruckManagementProject.Views.CustomerManagement.UpdateEmployeeUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TruckManagementProject.Views.CustomerManagement"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="800">
+
+    <Grid Background="#213666">
+
+
+        <StackPanel/>
+        <Label Content="Update Employee" FontSize="23" HorizontalAlignment="Left" Margin="317,10,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" Foreground="White" Background="#213666"/>
+        <Label Content="Office Address:" FontSize="18" HorizontalAlignment="Left" Margin="88,118,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Phone EXT Num:" FontSize="18" HorizontalAlignment="Left" Margin="88,157,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Username:" FontSize="18" HorizontalAlignment="Left" Margin="88,196,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Password:" FontSize="18" HorizontalAlignment="Left" Margin="88,235,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Role:" FontSize="18" HorizontalAlignment="Left" Margin="88,269,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="officeAddressTextBox" HorizontalAlignment="Left" Margin="267,122,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26" RenderTransformOrigin="0.557,2.228"/>
+        <TextBox x:Name="phoneExtNumTextBox" HorizontalAlignment="Left" Margin="267,161,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <TextBox x:Name="usernameTextBox" HorizontalAlignment="Left" Margin="267,200,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <TextBox x:Name="passWordTextBox" HorizontalAlignment="Left" Margin="267,239,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <Label Content="Name:" FontSize="18" HorizontalAlignment="Left" Margin="445,118,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <Label Content="Address:" FontSize="18" HorizontalAlignment="Left" Margin="445,159,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White" RenderTransformOrigin="0.462,2.78"/>
+        <Label Content="Telephone:" FontSize="18" HorizontalAlignment="Left" Margin="445,198,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="nameTextBox" HorizontalAlignment="Left" Margin="554,126,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <TextBox x:Name="addressTextBox" HorizontalAlignment="Left" Margin="554,168,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <TextBox x:Name="telephoneTextBox" HorizontalAlignment="Left" Margin="554,206,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <ComboBox x:Name="roleTextBox" HorizontalAlignment="Left" Margin="267,275,0,0" Grid.Row="1" VerticalAlignment="Top" Width="132" Height="28" >
+            <ComboBoxItem Content="staff" Cursor="Hand" IsSelected="True"/>
+            <ComboBoxItem Content="admin" Cursor="Hand"/>
+        </ComboBox>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="295,327,0,0" Grid.Row="1" VerticalAlignment="Top" Height="32" Width="104" Background="#FFFFD81E"/>
+        <Button Name="UpdateEmployeeButton" Content="Update Employee" HorizontalAlignment="Left" Margin="445,327,0,0" Grid.Row="1" VerticalAlignment="Top" Height="32" Width="120" Background="#FFFFD81E" Click="UpdateEmployeeButton_Click"/>
+        <Label Content="Employee ID:" FontSize="18" HorizontalAlignment="Left" Margin="198,59,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="White"/>
+        <TextBox x:Name="employeeIDTextBox" HorizontalAlignment="Left" Margin="328,63,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="132" Height="26"/>
+        <Button x:Name="SearchEmployeeButton" Content="SEARCH" HorizontalAlignment="Left" Margin="479,59,0,0" Grid.Row="1" VerticalAlignment="Top" Height="32" Width="104" Background="#FFFFD81E" Click="SearchEmployeeButton_Click"/>
+    </Grid>
+</UserControl>

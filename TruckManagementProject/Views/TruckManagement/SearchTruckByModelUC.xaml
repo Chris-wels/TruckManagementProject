@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="TruckManagementProject.Views.TruckManagement.SearchTruckByModelUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TruckManagementProject.Views.TruckManagement"
+             mc:Ignorable="d" 
+             d:DesignHeight="460" d:DesignWidth="800">
+    <Grid Background="#213666">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"/>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+        <!--First Column-->
+        <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Content="Search Truck By Model Form" FontSize="20" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="43" Width="290"/>
+        <Label Grid.Column="1" Grid.Row="3" Content="Search Truck Model :" FontSize="16" Foreground="White"  HorizontalAlignment="Left" VerticalAlignment="Center" Height="36" Width="160"/>
+        <TextBox Name="truckModelTextBox" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" TextWrapping="Wrap"  VerticalAlignment="Center" Width="160" Height="25"/>
+        <Button Grid.Column="3" Grid.Row="2"  x:Name="searchTruckModelButton" Content="Search" Background="Yellow" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="30" Click="searchTruckModelButton_Click" Grid.RowSpan="3" />
+        <DataGrid Name="datagrid" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="4" d:ItemsSource="{d:SampleData ItemCount=5}"  Grid.RowSpan="9"/>
+
+
+    </Grid>
+</UserControl>
