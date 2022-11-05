@@ -136,21 +136,42 @@ namespace TruckManagementProject.Controller
             }
         }
 
-        public static void changeAvailabilityStatus(int truckId)
+        //get all available trucks with Available for Rent Status
+        public static List<IndividualTruck> getAvailableTrucks()
+        {
+            using(DAD_ChristianContext ctx  = new DAD_ChristianContext()) 
+            {
+                return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(ts => ts.Status == "Available for Rent").ToList();
+            }
+        }
+
+        public static List<IndividualTruck> getRentedOutTrucks() 
+        {
+        using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
+            {
+                return ctx.IndividualTrucks.Include(rm => rm.TruckModel).Where(ro => ro.Status == "Rented").ToList();
+            }
+        
+        }
+
+        private static void changeAvailabilityStatus(int truckId)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-                IndividualTruck id = ctx.IndividualTrucks.Include(t => t.TruckModel).Where(it => it.TruckId == truckId).FirstOrDefault();
+                IndividualTruck id = ctx.IndividualTrucks.Where(it => it.TruckId == truckId).FirstOrDefault();
                 if (id != null)
                 {
                     if (id.Status == "Available for rent")
                     {
                         id.Status = "Rented";
+                        //ctx.Entry(id.Status).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                     }
                     else
                     {
                         id.Status = "Available for rent";
+                      
                     }
+
 
                     ctx.SaveChanges();
                 }
@@ -182,7 +203,7 @@ namespace TruckManagementProject.Controller
             {
                 ctx.Entry(rentalRecord).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 int id = rentalRecord.TruckId;
-                changeAvailabilityStatus(id);
+                changeAvailabilityStatus(id);   
                 ctx.SaveChanges();
             }
         }

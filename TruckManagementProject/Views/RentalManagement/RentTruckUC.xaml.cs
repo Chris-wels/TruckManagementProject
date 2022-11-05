@@ -25,7 +25,7 @@ namespace TruckManagementProject.Views.RentalManagement
         public RentTruckUC()
         {  //Shows Available Trucks for rent by Registration Number in the Regostration Combo Box 
             InitializeComponent();
-            TruckRegoComboBox.ItemsSource = DAO.getIndividualTrucks();
+            TruckRegoComboBox.ItemsSource = DAO.getAvailableTrucks();
             TruckRegoComboBox.DisplayMemberPath = "RegistrationNumber";
             TruckRegoComboBox.SelectedValuePath = "RegistrationNumber";
         }
@@ -64,7 +64,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 tr.TotalPrice = totalPrice;
 
                 DAO.rentTruck(tr, TruckId);
-                MessageBox.Show("success");
+                MessageBox.Show("Truck Rented Successfully");
 
             }
             catch (Exception ex)
@@ -81,7 +81,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 string registration = TruckRegoComboBox.Text;
                 if (registration != null )
                 {
-                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);
+                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);        
                     DepositTextBox.Text = deposit;
                 }else if(DepositTextBox != null) 
                 {
@@ -105,10 +105,11 @@ namespace TruckManagementProject.Views.RentalManagement
             else 
             {
                 string rego = TruckRegoComboBox.Text;
-                double price = (double)DAO.getTruckRego(rego).TruckId;
+                double price = (double)DAO.getTruckRego(rego).DailyRentalPrice;
                 DateTime rentDate = DateTime.Parse(DateRentedPicker.SelectedDate.ToString());
                 DateTime dueDate = DateTime.Parse(DateDuePicker.SelectedDate.ToString());
                 int days = (int)(dueDate - rentDate).TotalDays;
+                
                 if (dueDate == rentDate)
                 {
                     days = 1;

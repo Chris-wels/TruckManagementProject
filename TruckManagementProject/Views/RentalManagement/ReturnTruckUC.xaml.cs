@@ -25,7 +25,7 @@ namespace TruckManagementProject.Views.RentalManagement
         public ReturnTruckUC()
         {
             InitializeComponent();
-            TruckRegostrationComboBox.ItemsSource = DAO.getTruckRentals();
+            TruckRegostrationComboBox.ItemsSource = DAO.getRentedOutTrucks();
             TruckRegostrationComboBox.DisplayMemberPath = "RegistrationNumber";
             TruckRegostrationComboBox.SelectedValuePath = "RegistrationNumber";
         }
