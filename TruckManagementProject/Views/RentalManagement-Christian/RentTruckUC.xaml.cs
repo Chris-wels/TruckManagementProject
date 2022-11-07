@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using TruckManagementProject.Controller;
 using TruckManagementProject.Models.DB;
 
+
+
 namespace TruckManagementProject.Views.RentalManagement
 {
     /// <summary>
@@ -82,13 +84,14 @@ namespace TruckManagementProject.Views.RentalManagement
             try
             {
                 string registration = TruckRegoComboBox.Text;
-                if (registration != null)
-                {
+                if (registration == null)
+
+                {MessageBox.Show("please select a truck registration");
+                    
+                
+                } else{
                     string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);
                     DepositTextBox.Text = deposit;
-                } else if (TruckRegoComboBox.SelectedItem == "") 
-                {
-                    MessageBox.Show("please select a truck registration");
                 
                 }
             }
