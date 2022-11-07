@@ -24,7 +24,10 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
+        
+        
+        
+<!--Top Images and Labels Design Elements-->
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="#162854">
         </Border>
         <TextBlock FontWeight="DemiBold" FontSize="15" Margin="1,15" Foreground="#ddc31c" Grid.Column="1">Nz Truck Rental Service</TextBlock>
@@ -43,8 +46,8 @@
               Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1"
               Background="#162854" Foreground="#ddc31c" Padding="10" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
 
-        
-
+            
+        <!--Truck Menu Items-->
             <MenuItem Margin="150,3,50,1"  FontSize="15" Header="Trucks" >
                 <MenuItem Background="#162854" Name="addTruckMenuItem" Header="Add Trucks" Click="addTruckMenuItem_Click"/>
                 <MenuItem Background="#162854" Name="updateTruckMenuItem" Header="Update Trucks" Click="updateTruckMenuItem_Click"/>
@@ -53,6 +56,8 @@
                 <MenuItem Background="#162854" Name="searchTruckByModelMenuItem" Header="Search Trucks By Model" Click="searchTruckByModelMenuItem_Click" />
             </MenuItem>
 
+            
+      <!--User Management Menu Items-->
             <MenuItem   Margin="1,3,50,1" FontSize="15" Header="UserManagement">
                 <MenuItem Background="#162854" Name="EmployeeMenu" Header="Employees ">
                     <MenuItem Background="#162854" Name="addEmployeeMenuItem" Header="Add Employee" Click="addEmployeeButton_Click" />
@@ -64,7 +69,7 @@
 
                 </MenuItem>
 
-
+            <!--Rental Menu Items-->
             </MenuItem>
             <MenuItem Margin="1,3,50,1"  FontSize="15" Header="Rentals">
                 <MenuItem Background="#162854" Name="rentTruckMenuItem" Header="Rent Truck" Click="rentTruckMenuItem_Click"/>
@@ -75,15 +80,13 @@
 
 
 
-            <MenuItem Margin="1,3,50,1"  FontSize="15" Header="Reports">
-
-            </MenuItem>
+           
             <MenuItem Margin="1,3,50,1"     FontSize="15" Header="Log Out" Name="LogOutMenuItem" Click="LogOutMenuItem_Click" Foreground="red" />
 
 
 
         </Menu>
-
+        <!--Main Dashboard Images-->
         <Image Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Width="250" Height="200" Margin="0,0,0,100" Source="/Images/profile.png"/>
         <TextBlock Name="DashboardLabel" Grid.Column="1" Grid.Row="2" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="10,150,10,0" FontWeight="Bold" FontSize="30">Welcome to the Admin Dashboard</TextBlock>
         <!-- <Button Grid.Column="1"  Grid.Row="4" Margin="20" TextBlock.FontWeight="Bold" x:Name="LoginButton" Background="#f2d317" FontSize="15" Width="100" Padding="10" HorizontalAlignment="Left" Content="Log Out" Click="LoginButton_Click"/>-->
