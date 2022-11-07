@@ -20,7 +20,7 @@
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="70"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
@@ -30,7 +30,7 @@
 <!--Top Images and Labels Design Elements-->
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="#162854">
         </Border>
-        <TextBlock FontWeight="DemiBold" FontSize="15" Margin="1,15" Foreground="#ddc31c" Grid.Column="1">Nz Truck Rental Service</TextBlock>
+        <TextBlock  FontWeight="DemiBold" FontSize="20" VerticalAlignment="Center" Margin="20,1,1,1" Foreground="#ddc31c" Grid.Column="1">Nz Truck Rental Service</TextBlock>
         <Image  Grid.Column="0" Source="/Images/truck_icon.png"/>
         <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
 
@@ -43,12 +43,12 @@
 
         <!--All Menus and MenuItems-->
         <Grid Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1" Background="#162854" >
-        <Menu  Name="MainMenu" FontSize="30" TextBlock.FontWeight="Bold" Margin="1,1,1,1"    
+        <Menu  Name="MainMenu" FontSize="20" TextBlock.FontWeight="Bold" Margin="1,1,1,1"    
               Background="#162854" Foreground="#ddc31c" Padding="10" HorizontalContentAlignment="Center" HorizontalAlignment="Center">
 
             
         <!--Truck Menu Items-->
-            <MenuItem  Margin="1,3,50,1"  FontSize="15" Header="Trucks" >
+            <MenuItem  Margin="1,3,50,1"   Header="Trucks" >
                 <MenuItem Background="#162854" Name="addTruckMenuItem" Header="Add Trucks" Click="addTruckMenuItem_Click"/>
                 <MenuItem Background="#162854" Name="updateTruckMenuItem" Header="Update Trucks" Click="updateTruckMenuItem_Click"/>
                 <MenuItem Background="#162854" Name="showAllTruckMenuItem" Header="Show All Trucks" Click="showAllTruckMenuItem_Click" />
@@ -58,7 +58,7 @@
 
             
       <!--User Management Menu Items-->
-            <MenuItem   Margin="1,3,50,1" FontSize="15" Header="UserManagement">
+            <MenuItem   Margin="1,3,50,1"  Header="UserManagement">
                 <MenuItem Background="#162854" Name="EmployeeMenu" Header="Employees ">
                     <MenuItem Background="#162854" Name="addEmployeeMenuItem" Header="Add Employee" Click="addEmployeeButton_Click" />
                     <MenuItem Background="#162854" Name="updateEmployeeMenuItem" Header="Update Employee" Click="updateEmployeeButton_Click"/>
@@ -71,7 +71,7 @@
 
             <!--Rental Menu Items-->
             </MenuItem>
-            <MenuItem Margin="1,3,50,1"  FontSize="15" Header="Rentals">
+            <MenuItem Margin="1,3,50,1"   Header="Rentals">
                 <MenuItem Background="#162854" Name="rentTruckMenuItem" Header="Rent Truck" Click="rentTruckMenuItem_Click"/>
                 <MenuItem  Background="#162854" Name="returnRentalMenuItem" Header="Return Rental" Click="returnRentalMenuItem_Click"/>
                 <MenuItem Background="#162854" Name="showRentalByUser" Header="Show Rentals By User" Click="showRentalByUser_Click"/>
@@ -81,7 +81,7 @@
 
 
            
-            <MenuItem Margin="1,3,50,1"     FontSize="15" Header="Log Out" Name="LogOutMenuItem" Click="LogOutMenuItem_Click" Foreground="red" />
+            <MenuItem Margin="1,3,50,1"    Header="Log Out" Name="LogOutMenuItem" Click="LogOutMenuItem_Click" Foreground="red" />
 
 
 
