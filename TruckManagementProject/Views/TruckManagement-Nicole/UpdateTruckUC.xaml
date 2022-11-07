@@ -103,6 +103,6 @@
         </ListBox>
         <ComboBox x:Name="featureComboBox" Grid.Column="4" Text="-- Select transmission type --" Focusable="False" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Left" Grid.Row="13" Width="200" />
         <Button Grid.Column="4" Grid.Row="14" x:Name="addFeatureButton" Content="Add" Background="Yellow" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Center" Height="30" Width="80" Click="addFeatureButton_Click" Grid.RowSpan="2"/>
-        <Button Grid.Column="4" Grid.Row="14" x:Name="removeFeatureButton" Content="Remove" Background="Yellow" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="80" Click="removeFeatureButton_Click" Grid.RowSpan="2"/>
+        <Button Grid.Column="4" Grid.Row="14" x:Name="removeFeatureButton" Content="Remove" Background="Yellow" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80" Click="removeFeatureButton_Click" Grid.RowSpan="2"/>
     </Grid>
 </UserControl>

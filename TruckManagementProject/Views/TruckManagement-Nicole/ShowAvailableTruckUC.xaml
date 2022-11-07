@@ -36,7 +36,7 @@
         <!--First Column-->
         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Content="Available for Rent Truck Form" FontSize="20" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="43" Width="290"/>
         <Label Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Click button to display available trucks" FontSize="16" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Width="300"/>
-        <Button Grid.Column="3" Grid.Row="3" x:Name="showAvailButton" Content="Show" Background="Yellow" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Width="100" Click="showAvailButton_Click"/>
+        <Button Grid.Column="3" Grid.Row="3" x:Name="showAvailButton" Content="Show" Background="Yellow" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="100" Click="showAvailButton_Click"/>
 
         <DataGrid Name="availableTruckDataGrid" Grid.Column="1" Grid.Row="4" Grid.RowSpan="10" Grid.ColumnSpan="4" d:ItemsSource="{d:SampleData ItemCount=5}"/>
     </Grid>

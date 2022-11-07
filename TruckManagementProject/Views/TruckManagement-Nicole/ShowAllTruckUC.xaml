@@ -36,7 +36,7 @@
         <!--First Column-->
         <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4" Content="Display All Truck Form" FontSize="20" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Height="43" Width="220"/>
         <Label  Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" Content="Click button to display all trucks" FontSize="16" Foreground="White"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Width="240"/>
-        <Button Grid.Column="3" Grid.Row="2"  x:Name="showAllTrucksButton" Content="Show" Background="Yellow" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="100" Height="45" Click="showAllTrucksButton_Click" Margin="100,0,0,12" Grid.RowSpan="3"/>
+        <Button Grid.Column="3" Grid.Row="2"  x:Name="showAllTrucksButton" Content="Show" Background="Yellow" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Height="30" Click="showAllTrucksButton_Click" Grid.RowSpan="3"/>
         <DataGrid Name="showTruckDataGrid" Grid.Column="1" Grid.Row="5" Grid.RowSpan="9" Grid.ColumnSpan="4" d:ItemsSource="{d:SampleData ItemCount=5}"/>
     </Grid>
 </UserControl>
