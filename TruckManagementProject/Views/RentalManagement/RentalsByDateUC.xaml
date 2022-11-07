@@ -24,8 +24,8 @@
         <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" FontSize="25" Foreground="White" FontWeight="Bold" Content="Show Rented Trucks by Date"></Label>
         <Label VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Grid.Column="1" FontSize="15" Foreground="#f2d317" FontWeight="Bold" Content="Select two dates:" Grid.Row="1"></Label>
         <DatePicker  Name="datePickerOne" VerticalAlignment="Top" Grid.Row="2" Grid.Column="1" Width="150" HorizontalAlignment="Center" />
-        <DatePicker  VerticalAlignment="Top" Name="datePickerTwo" Grid.Row="2" Grid.Column="2" Width="150" HorizontalAlignment="Left" />
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="1" TextBlock.FontWeight="Bold" Name="ShowTruckButton" Background="#f2d317" Width="150" FontSize="15"  Content="Show Trucks"/>
+        <DatePicker Name="datePickerTwo"  VerticalAlignment="Top"  Grid.Row="2" Grid.Column="2" Width="150" HorizontalAlignment="Left" />
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="1" TextBlock.FontWeight="Bold" Name="ShowTruckByDateButton" Background="#f2d317" Width="150" FontSize="15"  Content="Show Trucks" Click="ShowTruckByDateButton_Click"/>
         <DataGrid Name="dateRentTruckDataGrid" Grid.Column="1" Grid.Row="2" Margin="10,40,10,10" Grid.RowSpan="2" Grid.ColumnSpan="2"></DataGrid>
     </Grid>
 </UserControl>

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TruckManagementProject.Controller;
+using TruckManagementProject.Models.DB;
 
 namespace TruckManagementProject.Views.RentalManagement
 {
@@ -23,6 +25,32 @@ namespace TruckManagementProject.Views.RentalManagement
         public RentalsByDateUC()
         {
             InitializeComponent();
+        }
+
+        private void ShowTruckByDateButton_Click(object sender, RoutedEventArgs e)
+        {
+            try {
+                //Gets the two selected DateTime Values 
+                DateTime firstDate = datePickerOne.SelectedDate.Value;
+                DateTime lastDate = datePickerTwo.SelectedDate.Value;
+
+                //Creates list of RentalRecords and Checks the getRentalBetweenDates Method
+                List<CustomDisplayRentalsByCustomer> rentalsBydates = DAO.getRentalBetweenDates(firstDate, lastDate);
+                if(rentalsBydates.Count > 0) 
+                {
+                    dateRentTruckDataGrid.ItemsSource = rentalsBydates;
+
+                }
+                else 
+                {
+                    MessageBox.Show("No records could be found between these two selected Dates");
+                }
+
+            }
+            catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

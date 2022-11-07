@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TruckManagementProject.Controller;
+using TruckManagementProject.Models.DB;
 
 namespace TruckManagementProject.Views.RentalManagement
 {
@@ -23,11 +26,32 @@ namespace TruckManagementProject.Views.RentalManagement
         public RentalsByCustomerUC()
         {
             InitializeComponent();
+            customerLicenseComboBox.ItemsSource = DAO.getAllCustomers();
+            customerLicenseComboBox.DisplayMemberPath = "LicenseNumber";
+            customerLicenseComboBox.SelectedValuePath = "LicenseNumber";
         }
 
-        private void ReturnTruckButton_Click(object sender, RoutedEventArgs e)
+        private void ShowRentalsButton_Click(object sender, RoutedEventArgs e)
         {
-
+            string customerLicense = customerLicenseComboBox.Text;
+            TruckCustomer cl = DAO.getCustomerLicense(customerLicense);
+            int id = cl.CustomerId;
+            try 
+            {
+                List<CustomDisplayRentalsByCustomer> rentals = DAO.displayRentalsByCustomer(id);
+                if(rentals.Count > 0) 
+                {
+                    rentalCustomerTruckDataGrid.ItemsSource = rentals;
+                  
+                }
+                else 
+                {
+                    MessageBox.Show("No records on this License could be found");
+                }
+            }catch(Exception ex) 
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

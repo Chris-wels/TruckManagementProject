@@ -14,8 +14,8 @@
     <Grid Background="#213666">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition  Height="50"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition  Height="60"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
@@ -27,7 +27,7 @@
 
         <Border Grid.Row="0" Grid.ColumnSpan="3" Background="#162854">
         </Border>
-        <TextBlock FontSize="15" Margin="1,15" Foreground="#ddc31c" Grid.Column="1">Nz Truck Rental Service</TextBlock>
+        <TextBlock FontWeight="DemiBold" FontSize="15" Margin="1,15" Foreground="#ddc31c" Grid.Column="1">Nz Truck Rental Service</TextBlock>
         <Image  Grid.Column="0" Source="/Images/truck_icon.png"/>
         <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
 
@@ -39,11 +39,11 @@
         </StackPanel>
 
 
-        <Menu Name="MainMenu" FontSize="30" TextBlock.FontWeight="Bold" Margin="1,1,1,1"    
+        <Menu  Name="MainMenu" FontSize="30" TextBlock.FontWeight="Bold" Margin="1,1,1,1"    
               Grid.Column="0" Grid.ColumnSpan="3"  Grid.Row="1"
               Background="#162854" Foreground="#ddc31c" Padding="10" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch">
 
-            <!--<StackPanel Height="auto" Width="auto" Orientation="Horizontal"> needs closing tag if in use-->
+        
 
             <MenuItem Margin="150,3,50,1"  FontSize="15" Header="Trucks" >
                 <MenuItem Background="#162854" Name="addTruckMenuItem" Header="Add Trucks" Click="addTruckMenuItem_Click"/>
@@ -78,7 +78,7 @@
             <MenuItem Margin="1,3,50,1"  FontSize="15" Header="Reports">
 
             </MenuItem>
-            <MenuItem Margin="1,3,50,1"    FontSize="15" Header="Log Out" Name="LogOutMenuItem" Click="LogOutMenuItem_Click" Foreground="red" />
+            <MenuItem Margin="1,3,50,1"     FontSize="15" Header="Log Out" Name="LogOutMenuItem" Click="LogOutMenuItem_Click" Foreground="red" />
 
 
 

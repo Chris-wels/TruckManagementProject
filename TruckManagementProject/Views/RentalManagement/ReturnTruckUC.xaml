@@ -8,8 +8,9 @@
            d:DesignHeight="700" d:DesignWidth="800">
     <Grid Background="#213666">
         <Grid.ColumnDefinitions>
-
-            <ColumnDefinition Width="280"/>
+           
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -19,8 +20,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="150"/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="1" Grid.ColumnSpan="1" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" FontSize="20" Foreground="White" FontWeight="Bold" Content="Return Rented Trucks"/>
-        <StackPanel Grid.Row="2" Grid.Column="1">
+        <Label Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"  Grid.Column="1" FontSize="20" Foreground="White" FontWeight="Bold" Content="Return Rented Trucks"/>
+        <StackPanel Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="1">
             <ComboBox Text="--Select a truck to return--" Name="TruckRegostrationComboBox" FontSize="20" Margin="10"/>
             <DatePicker Name="dateReturnedPicker"/>
 

@@ -26,6 +26,7 @@ namespace TruckManagementProject.Models.DB
         public virtual DbSet<TruckPerson> TruckPeople { get; set; }
         public virtual DbSet<TruckRental> TruckRentals { get; set; }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
