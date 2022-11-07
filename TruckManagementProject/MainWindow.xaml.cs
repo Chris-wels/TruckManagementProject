@@ -47,10 +47,11 @@ namespace TruckManagementProject
             else if (em.Role == "staff")
             {
                 AdminDashboard form = new AdminDashboard();
+                form.DashboardLabel.Text = "Welcome Staff Members";
                 form.EmployeeMenu.Visibility = Visibility.Collapsed;
                 form.addTruckMenuItem.Visibility = Visibility.Collapsed;
                 form.updateTruckMenuItem.Visibility = Visibility.Collapsed;
-                ///form.showTruckMenuItem.Visibility = Visibility.Collapsed;
+                form.showAllTruckMenuItem.Visibility = Visibility.Collapsed;
                 form.Show();
                 this.Hide();
 

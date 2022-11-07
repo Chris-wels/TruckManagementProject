@@ -23,7 +23,7 @@ namespace TruckManagementProject.Views.RentalManagement
     public partial class RentTruckUC : UserControl
     {
         public RentTruckUC()
-        {  //Shows Available Trucks for rent by Registration Number in the Regostration Combo Box 
+        {  //---------Shows Available Trucks for rent by Registration Number in the Regostration Combo Box 
             InitializeComponent();
             TruckRegoComboBox.ItemsSource = DAO.getAvailableTrucks();
             TruckRegoComboBox.DisplayMemberPath = "RegistrationNumber";
@@ -31,7 +31,7 @@ namespace TruckManagementProject.Views.RentalManagement
         }
 
 
-        //Shows the correct License Number According to the Inputed Customer Name
+        //---------Shows the correct License Number According to the Inputed Customer Name
         private void CustomerNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -46,7 +46,7 @@ namespace TruckManagementProject.Views.RentalManagement
             
         }
 
-        // creates an Object of truck rental and adds any inputed values to the Object
+        //---------- creates an Object of truck rental and adds any inputed values to the Object
         private void RentTruckButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -76,17 +76,17 @@ namespace TruckManagementProject.Views.RentalManagement
             }
         }
 
-        //Get the advanced deposit according to the registration
+        //-----------Get the advanced deposit according to the registration
         private void TruckRegoComboBox_DropDownClosed(object sender, EventArgs e)
         {
             try
             {
                 string registration = TruckRegoComboBox.Text;
-                if (registration != null )
+                if (registration != null)
                 {
-                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);        
+                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);
                     DepositTextBox.Text = deposit;
-                }else 
+                } else if (TruckRegoComboBox.SelectedItem == "") 
                 {
                     MessageBox.Show("please select a truck registration");
                 
@@ -97,7 +97,7 @@ namespace TruckManagementProject.Views.RentalManagement
                 MessageBox.Show(ex.Message);
             }
         }
-        //Calculates Date Rented and Date Due Total price amount
+        //----------Calculates Date Rented and Date Due Total price amount
         private void DateDuePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if(DateDuePicker.SelectedDate< DateTime.Today && DateDuePicker.SelectedDate < DateRentedPicker.SelectedDate) 
@@ -122,6 +122,12 @@ namespace TruckManagementProject.Views.RentalManagement
                 priceTextBox.Text = String.Format("{0:f2}",totalPrice);
 
             }
+        }
+
+        //----Sets Rent Date to Today
+        private void DateRentedPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateRentedPicker.SelectedDate = DateTime.Today;
         }
     }
 }

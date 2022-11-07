@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TruckManagementProject.Models.DB;
 
 namespace TruckManagementProject.Controller
@@ -81,7 +82,7 @@ namespace TruckManagementProject.Controller
 
         /*------Rental Management-------------------------------------------------------------------------------*/
 
-        //Adds Truck Record to TruckRental object in the database rental table and changes the availablity status when user rents a truck
+        //-------------Adds Truck Record to TruckRental object in the database rental table and changes the availablity status when user rents a truck
         public static void rentTruck(TruckRental rental, int id)
         {
             id = rental.TruckId;
@@ -93,7 +94,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
-        //gets or searches Customer By name
+        //-------------gets or searches Customer By name
         public static TruckCustomer getCustomerName(string customerName)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -104,7 +105,7 @@ namespace TruckManagementProject.Controller
 
         }
 
-        //Creates a List of All customers
+        //-------------Creates a List of All customers
         public static List<TruckCustomer> getAllCustomers() 
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext()) {
@@ -112,7 +113,7 @@ namespace TruckManagementProject.Controller
              }
         }
 
-        //Creates a list of Customers by Name
+        //-------------Creates a list of Customers by Name
         public static List<TruckCustomer> getCustomerNameLicense(string customerNameAndLicense)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -122,8 +123,21 @@ namespace TruckManagementProject.Controller
             }
 
         }
+        
+        //-------------Get Truck By registration
+        public static IndividualTruck getTruckRego(string Rego)
+        {
+            
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
+            {
+               
+                    return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(r => r.RegistrationNumber == Rego).FirstOrDefault();
+                
 
-        //Creates a List of All Customers
+            }
+        }
+
+        //-------------Creates a List of All Customers
         public static TruckCustomer getCustomerLicense(string customerLicense)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -133,7 +147,7 @@ namespace TruckManagementProject.Controller
             }
 
         }
-        //Gets individual Trucks
+        //-------------Gets individual Trucks
         public static List<IndividualTruck> getIndividualTrucks()
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -142,17 +156,9 @@ namespace TruckManagementProject.Controller
 
             }
         }
-        //Get Truck By registration
-        public static IndividualTruck getTruckRego(string Rego)
-        {
-            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
-            {
-                return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(r => r.RegistrationNumber == Rego).FirstOrDefault();
+       
 
-            }
-        }
-
-        //get all available trucks with "Available for Rent" Status
+        //-------------Get all available trucks with "Available for Rent" Status
         public static List<IndividualTruck> getAvailableTrucks()
         {
             using(DAD_ChristianContext ctx  = new DAD_ChristianContext()) 
@@ -161,7 +167,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
-        //get all available trucks with "Rented" Status
+        //-------------Get all available trucks with "Rented" Status
         public static List<IndividualTruck> getRentedOutTrucks() 
         {
         using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
@@ -170,7 +176,7 @@ namespace TruckManagementProject.Controller
             }
         
         }
-        //Gets attributes and methods from the CustomDisplayRentalsByCustomer class and turns it into a List
+        //---------Gets attributes and methods from the CustomDisplayRentalsByCustomer class and turns it into a List
         public static List<CustomDisplayRentalsByCustomer> displayRentalsByCustomer(int cid) 
         {
             using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
@@ -191,7 +197,7 @@ namespace TruckManagementProject.Controller
         
         }
 
-        //Gets Rental Records by Rentdate and matches it between Two Input Parameters with the DateTime DataType firstDate and secondDate to see how many Trucks have been rented between those two input parameters or Selected Dates
+        //---------Gets Rental Records by Rentdate and matches it between Two Input Parameters with the DateTime DataType firstDate and secondDate to see how many Trucks have been rented between those two input parameters or Selected Dates
         public static List<CustomDisplayRentalsByCustomer> getRentalBetweenDates(DateTime firsDate, DateTime secondDate)
         { 
             using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
@@ -212,7 +218,7 @@ namespace TruckManagementProject.Controller
         }
 
 
-        //Changes The status of each individual truck when called
+        //---------Changes The status of each individual truck when called
         private static void changeAvailabilityStatus(int truckId)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -238,7 +244,7 @@ namespace TruckManagementProject.Controller
         }
 
         
-        //gets Truck Rental Record of Individual Truck By registration Number
+        //---------Gets Truck Rental Record of Individual Truck By registration Number
         public static TruckRental getRentalRecordByRego(string record)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -248,7 +254,7 @@ namespace TruckManagementProject.Controller
         }
 
 
-        //Changes the rental record status of an individual truck when User returns a truck
+        //---------Changes the rental record status of an individual truck when User returns a truck
         public static void ReturnTruck(TruckRental rentalRecord)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())

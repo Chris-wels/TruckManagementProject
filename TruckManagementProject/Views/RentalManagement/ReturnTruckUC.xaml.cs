@@ -24,6 +24,7 @@ namespace TruckManagementProject.Views.RentalManagement
     {
         public ReturnTruckUC()
         {
+            //---------Gets Trucks that have been rented and displays their registration Number
             InitializeComponent();
             TruckRegostrationComboBox.ItemsSource = DAO.getRentedOutTrucks();
             TruckRegostrationComboBox.DisplayMemberPath = "RegistrationNumber";
@@ -32,6 +33,7 @@ namespace TruckManagementProject.Views.RentalManagement
 
         private void ReturnTruckButton_Click(object sender, RoutedEventArgs e)
         {
+            //------Gets the Record of an individual truck by registration number and then calls the ReturnTruck Method which changes the availability status of that selected truck record back to Avaialable for rent 
             try
             {
                 string registration = TruckRegostrationComboBox.Text;

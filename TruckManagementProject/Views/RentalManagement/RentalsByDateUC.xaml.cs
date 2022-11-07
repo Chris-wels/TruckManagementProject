@@ -30,11 +30,11 @@ namespace TruckManagementProject.Views.RentalManagement
         private void ShowTruckByDateButton_Click(object sender, RoutedEventArgs e)
         {
             try {
-                //Gets the two selected DateTime Values 
+                //-------Gets the two selected DateTime Values 
                 DateTime firstDate = datePickerOne.SelectedDate.Value;
                 DateTime lastDate = datePickerTwo.SelectedDate.Value;
 
-                //Creates list of RentalRecords and Checks the getRentalBetweenDates Method
+                //--------Creates list of RentalRecords and Checks the getRentalBetweenDates Method
                 List<CustomDisplayRentalsByCustomer> rentalsBydates = DAO.getRentalBetweenDates(firstDate, lastDate);
                 if(rentalsBydates.Count > 0) 
                 {

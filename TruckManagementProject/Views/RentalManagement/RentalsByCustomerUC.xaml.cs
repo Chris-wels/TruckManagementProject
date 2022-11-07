@@ -25,12 +25,14 @@ namespace TruckManagementProject.Views.RentalManagement
     {
         public RentalsByCustomerUC()
         {
+            //-------Gets all customers by License Number and displays their license Numbers in the combo box
             InitializeComponent();
             customerLicenseComboBox.ItemsSource = DAO.getAllCustomers();
             customerLicenseComboBox.DisplayMemberPath = "LicenseNumber";
             customerLicenseComboBox.SelectedValuePath = "LicenseNumber";
         }
 
+        //---------Creats List of Customers That Have a rental Record and displays the Rentals in the Datagrid
         private void ShowRentalsButton_Click(object sender, RoutedEventArgs e)
         {
             string customerLicense = customerLicenseComboBox.Text;
