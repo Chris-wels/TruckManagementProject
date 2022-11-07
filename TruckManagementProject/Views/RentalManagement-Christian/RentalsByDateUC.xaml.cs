@@ -36,7 +36,7 @@ namespace TruckManagementProject.Views.RentalManagement
 
                 //--------Creates list of RentalRecords and Checks the getRentalBetweenDates Method
                 List<CustomDisplayRentalsByCustomer> rentalsBydates = DAO.getRentalBetweenDates(firstDate, lastDate);
-                if(rentalsBydates.Count > 0) 
+                if(rentalsBydates != null) 
                 {
                     dateRentTruckDataGrid.ItemsSource = rentalsBydates;
 

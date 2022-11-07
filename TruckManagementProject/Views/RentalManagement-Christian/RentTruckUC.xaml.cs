@@ -86,7 +86,8 @@ namespace TruckManagementProject.Views.RentalManagement
                 string registration = TruckRegoComboBox.Text;
                 if (registration == null)
 
-                {MessageBox.Show("please select a truck registration");
+                {
+                    MessageBox.Show("please select a truck registration");
                     
                 
                 } else{
@@ -106,7 +107,7 @@ namespace TruckManagementProject.Views.RentalManagement
             if(DateDuePicker.SelectedDate< DateTime.Today && DateDuePicker.SelectedDate < DateRentedPicker.SelectedDate) 
             {
                 MessageBox.Show("Selected Due Date cannot be before Date Rented");
-                return;
+                DateRentedPicker.Text = "";
             }
             else 
             {
