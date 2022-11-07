@@ -105,7 +105,7 @@ namespace TruckManagementProject.Views.RentalManagement
         {
             if(DateDuePicker.SelectedDate< DateTime.Today && DateDuePicker.SelectedDate < DateRentedPicker.SelectedDate) 
             {
-                MessageBox.Show("Please select correct day");
+                MessageBox.Show("Selected Due Date cannot be before Date Rented");
                 return;
             }
             else 
