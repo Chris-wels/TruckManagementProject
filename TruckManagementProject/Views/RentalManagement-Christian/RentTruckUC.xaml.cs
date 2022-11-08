@@ -91,7 +91,7 @@ namespace TruckManagementProject.Views.RentalManagement
                     
                 
                 } else{
-                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);
+                    string deposit = string.Format("{0:F2}", DAO.getTruckRego(registration).AdvanceDepositRequired);//Not sure how to fix this error Make sure to select a truck registration otherwise this error will occur with this event handler
                     DepositTextBox.Text = deposit;
                 
                 }
