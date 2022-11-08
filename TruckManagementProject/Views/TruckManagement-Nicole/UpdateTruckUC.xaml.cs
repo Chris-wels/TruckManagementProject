@@ -178,7 +178,6 @@ namespace TruckManagementProject.Views.TruckManagement
                 indiTruck = DAO.searchRegisNo(regisNo);
 
                 //Unchangeable details of truck
-                //can be done in xaml too
                 modelTextBox.IsReadOnly = true;
                 sizeCombobox.IsReadOnly = true;
                 seatsTextBox.IsReadOnly = true;
@@ -201,27 +200,30 @@ namespace TruckManagementProject.Views.TruckManagement
                 DAO.updateTruck(indiTruck, model);
                 //DAO.addTruckFeature(tfa);
                 MessageBox.Show("Truck details has been successfully updated!");
+                searchRegistrationNoTextBox.Clear();
                 hideControls(true);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
         }
 
         private void addFeatureButton_Click(object sender, RoutedEventArgs e)
         {
+            //gets the selected item in the combobox
             TruckFeature selectedFeature = (TruckFeature)(featureComboBox.SelectedItem);
             var features = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
             if (selectedFeature != null)
             {
                 TruckFeatureAssociation tfa = new TruckFeatureAssociation();
-                var feature = featureComboBox.SelectedItem as TruckFeature;
                 tfa.TruckId = indiTruck.TruckId;
-                tfa.FeatureId = feature.FeatureId;
+                tfa.FeatureId = selectedFeature.FeatureId;
 
                 MessageBox.Show("Feature added successfully!");
                 DAO.addTruckFeatures(tfa);
+                //refreshes listbox to show the new feature added
                 listbox1.ItemsSource = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
             }
             else
@@ -232,26 +234,33 @@ namespace TruckManagementProject.Views.TruckManagement
 
         private void removeFeatureButton_Click(object sender, RoutedEventArgs e)
         {
-            List<TruckFeature> featureIDS = new List<TruckFeature>();
-
+            //gets the selected item in the combobox
             TruckFeature selectedFeature = (TruckFeature)(featureComboBox.SelectedItem);
             var features = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
-            if (features.Count != 0)
+            if (selectedFeature != null)
             {
-                TruckFeatureAssociation tfa = new TruckFeatureAssociation();
-                var feature = featureComboBox.SelectedItem as TruckFeature;
-                tfa.TruckId = indiTruck.TruckId;
-                tfa.FeatureId = feature.FeatureId;
+                if (features.Count != 0)
+                {
+                    TruckFeatureAssociation tfa = new TruckFeatureAssociation();
+                    tfa.TruckId = indiTruck.TruckId;
+                    tfa.FeatureId = selectedFeature.FeatureId;
 
-                MessageBox.Show("Feature removed successfully!");
-                DAO.deleteExistingFeature(tfa);
+                    MessageBox.Show("Feature removed successfully!");
+                    DAO.deleteExistingFeature(tfa);
 
-                listbox1.ItemsSource = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
+                    listbox1.ItemsSource = DAO.displayTruckFeaturesOfTruck(indiTruck.TruckId);
+                }
+                else
+                {
+                    MessageBox.Show("Truck " + indiTruck.RegistrationNumber + " does not contain any features");
+                }
+
             }
             else
             {
-                MessageBox.Show(indiTruck.RegistrationNumber + " does not contain any features");
+                MessageBox.Show("Please select the feature you want to remove first from combobox");
             }
+
 
             featureComboBox.SelectedIndex = -1;
         }

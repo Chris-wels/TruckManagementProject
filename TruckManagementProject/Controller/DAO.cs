@@ -11,7 +11,7 @@ namespace TruckManagementProject.Controller
 {
     internal class DAO
     {
-      
+
         static public TruckEmployee userLogin(string username, string pwd)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -20,7 +20,7 @@ namespace TruckManagementProject.Controller
                 return tp;
             }
         }
-        
+
         /*------Customer Management-----------------------------------------------------------------------------------------------------------*/
         static public void addCustomer(TruckCustomer cust)
         {
@@ -106,11 +106,12 @@ namespace TruckManagementProject.Controller
         }
 
         //-------------Creates a List of All customers
-        public static List<TruckCustomer> getAllCustomers() 
+        public static List<TruckCustomer> getAllCustomers()
         {
-            using (DAD_ChristianContext ctx = new DAD_ChristianContext()) {
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
+            {
                 return ctx.TruckCustomers.Include(c => c.Customer).ToList();
-             }
+            }
         }
 
         //-------------Creates a list of Customers by Name
@@ -123,16 +124,16 @@ namespace TruckManagementProject.Controller
             }
 
         }
-        
+
         //-------------Get Truck By registration
         public static IndividualTruck getTruckRego(string Rego)
         {
-            
+
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-               
-                    return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(r => r.RegistrationNumber == Rego).FirstOrDefault();
-                
+
+                return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(r => r.RegistrationNumber == Rego).FirstOrDefault();
+
 
             }
         }
@@ -156,30 +157,30 @@ namespace TruckManagementProject.Controller
 
             }
         }
-       
+
 
         //-------------Get all available trucks with "Available for Rent" Status
         public static List<IndividualTruck> getAvailableTrucks()
         {
-            using(DAD_ChristianContext ctx  = new DAD_ChristianContext()) 
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
                 return ctx.IndividualTrucks.Include(tm => tm.TruckModel).Where(ts => ts.Status == "Available for Rent").ToList();
             }
         }
 
         //-------------Get all available trucks with "Rented" Status
-        public static List<IndividualTruck> getRentedOutTrucks() 
+        public static List<IndividualTruck> getRentedOutTrucks()
         {
-        using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
                 return ctx.IndividualTrucks.Include(rm => rm.TruckModel).Where(ro => ro.Status == "Rented").ToList();
             }
-        
+
         }
         //---------Gets attributes and methods from the CustomDisplayRentalsByCustomer class and turns it into a List
-        public static List<CustomDisplayRentalsByCustomer> displayRentalsByCustomer(int cid) 
+        public static List<CustomDisplayRentalsByCustomer> displayRentalsByCustomer(int cid)
         {
-            using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
                 return ctx.TruckRentals.Where(t => t.CustomerId == cid).Select(rentalRecords => new CustomDisplayRentalsByCustomer
                 {
@@ -192,17 +193,17 @@ namespace TruckManagementProject.Controller
                     TotalPrice = string.Format("{0:F2}", rentalRecords.TotalPrice),
 
                 }).ToList();
-            
+
             }
-        
+
         }
 
         //---------Gets Rental Records by Rentdate and matches it between Two Input Parameters with the DateTime DataType firstDate and secondDate to see how many Trucks have been rented between those two input parameters or Selected Dates
         public static List<CustomDisplayRentalsByCustomer> getRentalBetweenDates(DateTime firsDate, DateTime secondDate)
-        { 
-            using(DAD_ChristianContext ctx = new DAD_ChristianContext()) 
+        {
+            using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-                return ctx.TruckRentals.Where(rd => rd.RentDate >= firsDate && rd.RentDate <= secondDate).Select(rentalRecords => new CustomDisplayRentalsByCustomer 
+                return ctx.TruckRentals.Where(rd => rd.RentDate >= firsDate && rd.RentDate <= secondDate).Select(rentalRecords => new CustomDisplayRentalsByCustomer
                 {
 
                     RentalId = rentalRecords.RentalId,
@@ -213,7 +214,7 @@ namespace TruckManagementProject.Controller
                     ReturnDate = rentalRecords.ReturnDate.ToString("dd/MM/yyyy"),
                     TotalPrice = string.Format("{0:F2}", rentalRecords.TotalPrice),
                 }).ToList();
-            
+
             }
         }
 
@@ -234,7 +235,7 @@ namespace TruckManagementProject.Controller
                     else
                     {
                         id.Status = "Available for rent";
-                      
+
                     }
 
 
@@ -243,7 +244,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
-        
+
         //---------Gets Truck Rental Record of Individual Truck By registration Number
         public static TruckRental getRentalRecordByRego(string record)
         {
@@ -261,7 +262,7 @@ namespace TruckManagementProject.Controller
             {
                 ctx.Entry(rentalRecord).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 int id = rentalRecord.TruckId;
-                changeAvailabilityStatus(id);   
+                changeAvailabilityStatus(id);
                 ctx.SaveChanges();
             }
         }
@@ -275,6 +276,7 @@ namespace TruckManagementProject.Controller
             List<TruckFeatureAssociation> tfalist = new List<TruckFeatureAssociation>();
             foreach (var feature in Tassociation)
             {
+                //assigns the truck id and feature id for the TruckFeatureAssociation table
                 TruckFeatureAssociation tf = new TruckFeatureAssociation();
                 tf.TruckId = ittruck.TruckId;
                 tf.FeatureId = feature.FeatureId;
@@ -298,6 +300,9 @@ namespace TruckManagementProject.Controller
         }
 
         //-------SearchTruckByModel
+
+        //Created a Custom class to
+        //display combine individual truck, model, and features table in datagrid
         public static List<CustomSearchTruckByModel> getTruckModelFullDetails()
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -315,6 +320,8 @@ namespace TruckManagementProject.Controller
                     }).ToList();
             }
         }
+
+        //Displays the selected model details after user search
         public static List<CustomSearchTruckByModel> searchTruckModel(string model)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -334,6 +341,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
+        //Used to determine if the model input from user matches models in database
         public static TruckModel searchModelByName(string name)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -344,6 +352,8 @@ namespace TruckManagementProject.Controller
 
 
         //-------------Show All Truck
+
+        //Display all trucks with details from the Database
         public static List<CustomTruckModelClass> displayAllTrucks()
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -406,15 +416,17 @@ namespace TruckManagementProject.Controller
         }
 
         //-----------Update Trucks
+
+        //Get all Truck Features
         public static List<TruckFeature> getFeatures()
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
             {
-                //truckF.FeatureId(from TruckFeatures table) == id 
                 return ctx.TruckFeatures.ToList();
             }
         }
 
+        //Searching Truck based on Registration Number
         public static IndividualTruck searchRegisNo(string regisNo)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -423,6 +435,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
+        //Display features of a specific truck using Truck.ID
         public static List<TruckFeatureAssociation> displayTruckFeaturesOfTruck(int id)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -431,6 +444,8 @@ namespace TruckManagementProject.Controller
             }
         }
 
+
+        //Update Truck Details
         public static void updateTruck(IndividualTruck individualTruck, TruckModel truckModel)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -442,6 +457,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
+        //Adding new truck features 
         public static void addTruckFeatures(TruckFeatureAssociation tfa)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -451,6 +467,7 @@ namespace TruckManagementProject.Controller
             }
         }
 
+        //Deleting existing features 
         public static void deleteExistingFeature(TruckFeatureAssociation tfa)
         {
             using (DAD_ChristianContext ctx = new DAD_ChristianContext())
@@ -460,6 +477,5 @@ namespace TruckManagementProject.Controller
             }
 
         }
-
     }
 }
